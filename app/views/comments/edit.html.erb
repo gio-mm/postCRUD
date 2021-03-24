@@ -1,0 +1,17 @@
+<%=  form_with(model: @comment,local:true) do |f| %>
+
+  <div class="input-group" >
+
+    <%=f.hidden_field :post_id,value: @comment.id %>
+
+    <%= f.text_area :body,class:'form-control',rows:5  %>
+
+    <%= f.submit class:'btn btn-dark ' %>
+  </div>
+
+  <div class="input-group " style=''>
+
+
+
+  </div>
+<%end %>
