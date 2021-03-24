@@ -1,7 +1,8 @@
 class PostsController < ApplicationController
 
     def show
-
+      @post=Post.where(id:params[:id],mark_for_deletion: false).first
+      @comments=@post.comments.all
     end
 
     def index

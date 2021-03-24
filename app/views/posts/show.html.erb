@@ -1,1 +1,39 @@
-show
+<h2 class="text-center"><%= @post.title %></h2>
+
+<div class="" style="min-height: 60vh">
+  <p class=""><%=@post.body %> </p>
+</div>
+
+
+<h3 class="mt-4">comments</h3>
+<% @comments.each do |comment| %>
+  <div class="w-100 bg-dark rounded my-4">
+    <div class="d-flex">
+
+      <%= link_to 'edit', edit_comment_path(comment) , class:"btn btn-secondary m-2"  %>
+      <%= link_to 'delete', comment_path(comment),method: :delete , class:"btn btn-secondary m-2"  %>
+
+      <p class="text-light p-2 ml-auto m-2"><%= comment.body %></p>
+
+
+    </div>
+
+  </div>
+<%end %>
+<%= form_with scope: :comments, url: comments_path, local:true do |f| %>
+
+  <div class="input-group" >
+
+    <%=f.hidden_field :post_id,value: @post.id %>
+
+    <%= f.text_area :body,class:'form-control',rows:5  %>
+
+    <%= f.submit class:'btn btn-dark ' %>
+  </div>
+
+  <div class="input-group " style=''>
+
+
+
+  </div>
+<%end %>
