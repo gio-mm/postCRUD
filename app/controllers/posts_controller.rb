@@ -25,7 +25,7 @@ class PostsController < ApplicationController
 
         redirect_to @post
       else
-        render
+        render "new"
       end
 
     end
@@ -38,11 +38,21 @@ class PostsController < ApplicationController
 
 
     def update
+      @post=Post.where(id:params[:id],mark_for_deletion: false).first
+      if @post.update(params.require(:post).permit(:title,:body))
 
+        flash[:notice] = "Post was updated successfully"
+        redirect_to @post
+      else
+        render 'edit'
+      end
     end
 
     def destroy
-
+      @post=Post.find(params[:id])
+      @post.mark_for_deletion=true
+      @post.save
+      redirect_to posts_path
     end
 
 
