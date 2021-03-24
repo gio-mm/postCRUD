@@ -10,10 +10,23 @@ class PostsController < ApplicationController
     end
 
     def new
-
+      @post = Post.new
     end
     def create
 
+      @post=Post.new(params.require(:posts).permit(:title,:body))
+
+      @post.created_at=Time.now
+
+      # render plain: @post.inspect
+
+      if @post.save
+        flash[:notice]="Article was created successfully"
+
+        redirect_to @post
+      else
+        render
+      end
 
     end
     def edit

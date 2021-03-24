@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_24_005036) do
+ActiveRecord::Schema.define(version: 2021_03_24_005037) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,7 +25,7 @@ ActiveRecord::Schema.define(version: 2021_03_24_005036) do
   create_table "posts", force: :cascade do |t|
     t.string "title"
     t.text "body"
-    t.boolean "mark_for_deletion"
+    t.boolean "mark_for_deletion", default: false
     t.datetime "created_at"
   end
 
