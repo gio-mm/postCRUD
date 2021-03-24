@@ -18,7 +18,7 @@ class PostsController < ApplicationController
     end
     def edit
 
-
+        @post=Post.where(id:params[:id],mark_for_deletion: false).first
 
     end
 

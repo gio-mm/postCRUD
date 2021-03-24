@@ -1,0 +1,46 @@
+
+<% if @post.errors.any? %>
+  <ul>
+    <% @post.errors.full_messages.each do |msg| %>
+      <li> <%=msg %></li>
+    <%end %>
+  </ul>
+
+<%end %>
+
+
+<h1> edit post</h1>
+
+
+
+<% if @post.errors.any? %>
+  <ul>
+    <% @post.errors.full_messages.each do |msg| %>
+      <li> <%=msg %></li>
+    <%end %>
+  </ul>
+
+<%end %>
+
+<%= form_with(model: @post,local:true) do |f| %>
+  <div class="input-group mb-3">
+    <!--    <span class="input-group-text" id="basic-addon1">title</span>-->
+    <%= f.label :title, class: "input-group-text"%>
+    <!--    <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">-->
+    <%= f.text_field :title, class:'form-control' %>
+  </div>
+
+
+  <div class="input-group" style="height:400px">
+    <%= f.label :body, class:'input-group-text' %>
+
+    <%= f.text_area :body,class:'form-control',rows:1  %>
+  </div>
+
+  <div class="input-group " style=''>
+
+    <%= f.submit class:'btn btn-dark mt-4 m-auto' %>
+
+  </div>
+
+<%end %>
