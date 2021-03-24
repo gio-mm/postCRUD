@@ -15,7 +15,7 @@
     <tr>
       <th scope="row"><%= post.id %></th>
       <td> <%= post.title %></td>
-      <td> <%= post.created_at %></td>
+      <td> <%= post.created_at.strftime("%m/%d/%Y %H:%M:%S") %></td>
       <td> <%= link_to 'show more', post_path(post) , class:"text-success"  %></td>
       <td>  <%= link_to 'edit', edit_post_path(post) , class:" text-secondary"  %></td>
       <td>  <%= link_to 'delete', post_path(post),method: :delete , class:"text-secondary"  %></td>
